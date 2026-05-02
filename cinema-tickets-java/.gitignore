@@ -1,0 +1,26 @@
+# Compiled files
+*.class
+
+# Logs
+*.log
+
+# Maven target folder
+/target/
+
+# IntelliJ
+.idea/
+*.iml
+
+# VS Code
+.vscode/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Build files
+*.jar
+*.war
+
+# Temporary files
+*.tmp
