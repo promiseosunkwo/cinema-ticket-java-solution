@@ -36,17 +36,20 @@ public class TicketServiceImpl implements TicketService {
         // 1. Validate input
         validator.validate(accountId, ticketTypeRequests);
 
+        // Safe to unbox because validation has passed
+        long validAccountId = accountId;
+
         // 2. Calculate total cost
-        int totalAmount = pricingService.calculateTotal(ticketTypeRequests);
+        int totalAmount = pricingService.calculateTotalPrice(ticketTypeRequests);
 
         // 3. Calculate seats
-        int totalSeats = seatCalculator.calculateSeats(ticketTypeRequests);
+        int totalSeats = seatCalculator.calculateTotalSeats(ticketTypeRequests);
 
         // 4. Make payment
-        paymentService.makePayment(accountId, totalAmount);
+        paymentService.makePayment(validAccountId, totalAmount);
 
         // 5. Reserve seats
-        seatService.reserveSeat(accountId, totalSeats);
+        seatService.reserveSeat(validAccountId, totalSeats);
     }
 
 }

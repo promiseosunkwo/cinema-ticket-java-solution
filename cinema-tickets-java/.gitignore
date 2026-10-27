@@ -10,6 +10,7 @@
 # IntelliJ
 .idea/
 *.iml
+target/
 
 # VS Code
 .vscode/
