@@ -10,10 +10,10 @@ import uk.gov.dwp.uc.pairtest.exception.InvalidPurchaseException;
 public class TicketRequestValidator {
     private static final int MAX_TICKETS = 25;
 
-    public void validate(long accountId, TicketTypeRequest... ticketTypeRequests) {
+    public void validate(Long accountId, TicketTypeRequest... ticketTypeRequests) {
 
-        if (accountId <= 0) {
-            throw new InvalidPurchaseException("Invalid account ID");
+        if (accountId == null || accountId <= 0) {
+            throw new InvalidPurchaseException("Account ID must be greater than zero");
         }
 
         if (ticketTypeRequests == null || ticketTypeRequests.length == 0) {
@@ -26,6 +26,18 @@ public class TicketRequestValidator {
         int infantCount = 0;
 
         for (TicketTypeRequest req : ticketTypeRequests) {
+            if (req == null) {
+                throw new InvalidPurchaseException("Ticket request cannot be null");
+            }
+
+            if (req.getTicketType() == null) {
+                throw new InvalidPurchaseException("Ticket type cannot be null");
+            }
+
+            if (req.getNoOfTickets() <= 0) {
+                throw new InvalidPurchaseException("Ticket quantity must be greater than zero");
+            }
+
             int count = req.getNoOfTickets();
             totalTickets += count;
 
@@ -42,10 +54,6 @@ public class TicketRequestValidator {
 
         if (adultCount == 0 && (childCount > 0 || infantCount > 0)) {
             throw new InvalidPurchaseException("Child and Infant tickets require at least one Adult");
-        }
-
-        if (infantCount > adultCount) {
-            throw new InvalidPurchaseException("Each infant must have an adult");
         }
     }
 }
