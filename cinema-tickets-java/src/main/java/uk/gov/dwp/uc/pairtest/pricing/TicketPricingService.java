@@ -10,7 +10,7 @@ public class TicketPricingService {
     private static final int ADULT_PRICE = 25;
     private static final int CHILD_PRICE = 15;
 
-    public int calculateTotal(TicketTypeRequest... ticketTypeRequests) {
+    public int calculateTotalPrice(TicketTypeRequest... ticketTypeRequests) {
 
         int total = 0;
 
