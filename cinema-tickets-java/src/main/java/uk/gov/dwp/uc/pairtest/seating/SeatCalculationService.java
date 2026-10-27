@@ -6,7 +6,7 @@ import uk.gov.dwp.uc.pairtest.domain.TicketTypeRequest;
  * Calculates number of seats with validation based on defined business rules.
  */
 public class SeatCalculationService {
-    public int calculateSeats(TicketTypeRequest... ticketTypeRequests) {
+    public int calculateTotalSeats(TicketTypeRequest... ticketTypeRequests) {
 
         int seats = 0;
 
