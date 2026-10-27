@@ -188,14 +188,14 @@ seatService.reserveSeat(validAccountId, totalSeats);
 
 Invalid purchases throw `InvalidPurchaseException`, a runtime exception. Validation should provide clear error messages so failures can be understood and diagnosed.
 
-| Invalid input | Example message |
-| --- | --- |
-| Null, zero or negative account ID | `Account ID must be greater than zero` |
-| Null or empty ticket array | `At least one ticket must be requested` |
-| Null request entry | `Ticket request cannot be null` |
-| Null ticket type | `Ticket type cannot be null` |
-| Zero or negative quantity | `Ticket quantity must be greater than zero` |
-| More than 25 tickets in total | `Cannot purchase more than 25 tickets` |
+| Invalid input | Example message                                       |
+| --- |-------------------------------------------------------|
+| Null, zero or negative account ID | `Account ID must be greater than zero`                |
+| Null or empty ticket array | `No ticket requests provided`                         |
+| Null request entry | `Ticket request cannot be null`                       |
+| Null ticket type | `Ticket type cannot be null`                          |
+| Zero or negative quantity | `Ticket quantity must be greater than zero`           |
+| More than 25 tickets in total | `Cannot purchase more than 25 tickets`                |
 | Child or infant tickets without an adult | `Child and Infant tickets require at least one Adult` |
 
 These messages describe the intended validation contract. The exact wording should match the actual implementation and any tests that assert messages.
