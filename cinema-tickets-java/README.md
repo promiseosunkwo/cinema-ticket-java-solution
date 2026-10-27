@@ -311,7 +311,9 @@ A successful run should finish without failing tests or compilation errors. Any 
 
 ### Immutable ticket requests
 
-`TicketTypeRequest` should be immutable, as requested by the exercise. Its state should be set at construction and not changed afterwards. This can be achieved with private final fields and no setters while preserving the expected constructor and getters.
+`TicketTypeRequest` is implemented as an immutable object, as recommended in the exercise requirements. Its fields are declared `private final` and are initialised through the constructor. The class provides getter methods but no setters, so the ticket type and quantity cannot be changed after the object is created.
+
+This makes ticket requests predictable and prevents accidental changes to their values during validation, pricing and seat calculation. The existing constructor, enum and getter methods have been preserved to maintain compatibility with the supplied code.
 
 ### Validation before side effects
 
