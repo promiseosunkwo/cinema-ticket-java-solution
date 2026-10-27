@@ -242,5 +242,17 @@ class TicketRequestValidatorTest {
 
             assertInvalidWithMessage("Ticket type cannot be null", 1L, invalid);
         }
+
+
+        @Test
+        @DisplayName("Should reject ticket quantities that could cause integer overflow")
+        void shouldRejectTicketQuantityOverflow() {
+
+            TicketTypeRequest adult = ticket(TicketTypeRequest.Type.ADULT, 1);
+
+            TicketTypeRequest excessiveAdults = ticket(TicketTypeRequest.Type.ADULT, Integer.MAX_VALUE);
+
+            assertInvalidWithMessage("Cannot purchase more than 25 tickets", 1L, adult, excessiveAdults);
+        }
     }
 }

@@ -21,7 +21,6 @@ import static org.mockito.Mockito.*;
 class TicketServiceImplTest {
 
     private static final long VALID_ACCOUNT_ID = 1L;
-
     private TicketPaymentService paymentService;
     private SeatReservationService seatService;
     private TicketServiceImpl ticketService;
